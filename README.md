@@ -13,7 +13,12 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 </p>
 
 <p align="center">
-<img src="/img/na-inference-rsults.png"
+<object data="/img/InferenceResults.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="/img/InferenceResults.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/img/InferenceResults.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+
 </p>
 
 ## Contents
