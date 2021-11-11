@@ -9,7 +9,7 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 [![arXiv](https://img.shields.io/badge/arXiv-2110.04064-green)](https://arxiv.org/abs/2110.04064)
 
 <p style="display: flex; flex-direction: column;">
-<img src="/img/InferenceResults.png">
+<img src="/img/InferenceResults.jpg">
 <img src="/img/NeuralAnthropometerApproachOverview.jpg">
 <img src="/img/ShoulderWidthMaleSubject.jpg">
 <img src="/img/FemaleSubjectArmLength.jpg">
