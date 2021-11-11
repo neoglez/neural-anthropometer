@@ -8,17 +8,11 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2110.04064-green)](https://arxiv.org/abs/2110.04064)
 
-<p align="center">
-<img src="/img/na-pipeline.png"
-</p>
-
-<p align="center">
-<object data="/img/InferenceResults.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="/img/InferenceResults.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/img/InferenceResults.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
-
+<p style="display: flex; flex-direction: column;">
+<img src="/img/InferenceResults.png">
+<img src="/img/NeuralAnthropometerApproachOverview.jpg">
+<img src="/img/ShoulderWidthMaleSubject.jpg">
+<img src="/img/FemaleSubjectArmLength.jpg">
 </p>
 
 ## Contents
