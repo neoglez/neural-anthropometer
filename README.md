@@ -32,7 +32,7 @@ You can check [Storage info](https://github.com/neoglez/neural-anthropometer#4-s
 Download from our cloud (see bellow).
 | Dataset  |  Download Link     | sha256sum      |  Password |
 |----------|:-------------:|---------------:|---------------:|
-| Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/1234) | ab5d48c57677a7654c073e3148fc545cb335320961685886ed8ea8fef870b15e   | neural-anthropometer-dataset   |
+| Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/5uD3bt1n207k8ko) | ab5d48c57677a7654c073e3148fc545cb335320961685886ed8ea8fef870b15e   | na-dataset |
 
 The general structure of the folders is as follows:
 
@@ -186,4 +186,4 @@ Please check the [license terms](https://github.com/neoglez/neural-anthropometer
 The [SMPL team](https://smpl.is.tue.mpg.de/) for providing us with the learned human body templates and the SMPL code.
 
 
-The [vedo team](https://github.com/marcomusy/vedo) (specially Marco Musy) and the [trimesh team](https://github.com/mikedh/trimesh) for the great visualization and intersection libraries.
+The [vedo team](https://github.com/marcomusy/vedo) (specially Marco Musy) and the [trimesh team](https://github.com/mikedh/trimesh) (specially Michael Dawson-Haggerty) for the great visualization and intersection libraries.
