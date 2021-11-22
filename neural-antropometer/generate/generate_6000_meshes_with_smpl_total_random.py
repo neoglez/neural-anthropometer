@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+"""
+@author: neoglez
+"""
 from smpl import SMPL
 
-# from STAR.ch.star import STAR
 import numpy as np
 import os
 import torch
@@ -36,10 +37,10 @@ for d in [dataset_meshes_path,
           json_log_dir]:
     os.makedirs(d, exist_ok=True)
 
-SMPL_basicModel_f_lbs_path = os.path.join(dataset_path, "datageneration",
-                                          "basicModel_f_lbs_10_207_0_v1.0.0.pkl")
-SMPL_basicModel_m_lbs_path = os.path.join(dataset_path, "datageneration",
-                                          "basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
+SMPL_basicModel_f_lbs_path = ("/media/neoglez/Data2/privat/PhD_Uni_Salzburg"
+              "/DATASETS/smpl/models/basicModel_f_lbs_10_207_0_v1.0.0.pkl")
+SMPL_basicModel_m_lbs_path = ("/media/neoglez/Data2/privat/PhD_Uni_Salzburg"
+              "/DATASETS/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
 model_files = {
     'female': SMPL_basicModel_f_lbs_path,
     'male': SMPL_basicModel_m_lbs_path
@@ -50,24 +51,6 @@ batch_size = 1
 num_male_meshes = 3000
 num_female_meshes = 3000
 
-# random samples from a uniform distribution over [0, 1).
-#betas = np.random.rand(
-#    batch_size, num_betas, num_female_meshes + num_female_meshes
-#)
-
-#random samples from a normal (Gaussian) distribution.
-#mu, sigma = 0, 3 # mean and standard deviation
-# DID NOT WORK!
-
-# different gaussians for the first 10 components and uniform for the rest 300
-#betas = np.zeros(
-#    (batch_size, num_betas, num_female_meshes + num_female_meshes)
-#)
-# did NOT WORK!!!
-
-# After all you had to do what you already knew from the original paper
-# or it was the paper from pichulin? Yes, it is the paper from Pichulin
-# but do not forget that they use another shape space.
 low = -3
 hig = 3
 betas = np.random.uniform(low, hig,(
@@ -107,7 +90,7 @@ for i,_ in enumerate(range(betas.shape[2])):
         else gender
     )
 
-    # init STAR
+    # init SMPL
     smpl = SMPL(model_files[gender])
     # synthesize
     subject_betas = torch.FloatTensor(betas[:, :, i])

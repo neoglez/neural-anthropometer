@@ -31,7 +31,7 @@ You can check [Storage info](https://github.com/neoglez/neural-anthropometer#4-s
 Download from our cloud (see bellow).
 | Dataset  |  Download Link     | sha256sum      |  Password |
 |----------|:-------------:|---------------:|---------------:|
-| Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/5uD3bt1n207k8ko) | ab5d48c57677a7654c073e3148fc545cb335320961685886ed8ea8fef870b15e   | na-dataset |
+| Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/5uD3bt1n207k8ko) | 7fe685fa21988a5dfcf567cdc18bee208f99e37ef44bef1d239aa720e219c47e | na-dataset |
 
 The general structure of the folders is as follows:
 
@@ -100,7 +100,19 @@ cd hbm
 pip install .
 ```
 
-#### 2.1.3. Synthetic images with Blender
+#### 2.1.3. Neural Anthropometer
+``` shell
+
+git clone http://github.com/neoglez/neural-anthropometer.git
+cd neural-anthropometer
+pip install .
+```
+
+#### 2.1.4. Mesh synthesis
+
+To synthesize the meshes, open and run `train_Neural-Anthropometer_cross_validation.py` in your preferred IDE.
+
+#### 2.1.5. Synthetic images with Blender
 
 Building Blender is a painful process. That is why we recommend to download and install the version that we used. The provided code was tested with [Blender2.78](http://download.blender.org/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2).
 
@@ -108,9 +120,9 @@ Just open the Scripting view and load (or copy and paste) the script `synthesize
 Change the path correspondingly at `cmu_dataset_path = os.path.abspath("/home/youruser/YourCode/calvis/CALVIS/dataset/cmu/")` and run the script.
 The process takes several minutes.
 
-#### 2.1.4. Vedo and Trimesh
+#### 2.1.6. Vedo and Trimesh
 
-You need to install these two libraries:
+You need to install these two libraries (if you do not have them):
 
 ``` shell
 
@@ -125,7 +137,7 @@ Run the script `.py`
 The process takes several hours.
 
 #### 2.1.3. Visualize shoulder width, right and left arm length and inseam.
-To visualize at which points Sharmeam is calculating the body measurements, follow the code in `display_one_by_one_8_subjects_Sharmeam_with_vtkplotter_and_trimesh.py` or directly display it with jupyter notebook `display_one_by_one_8_subjects_Sharmeam_with_vtkplotter_and_trimesh.ipynb`
+To visualize at which points Sharmeam is calculating the body measurements, follow the code in `display_one_by_one_8_subjects_Sharmeam_with_vedo_and_trimesh.py` or directly display it with colab `display_one_by_one_8_subjects_Sharmeam_with_vedo_and_trimesh.ipynb`
 
 Note: To display the meshes in the browser, we use k3d backend. Install it with
 
@@ -152,16 +164,21 @@ conda install -c anaconda scipy
 conda install -c anaconda scikit-image
 ```
 
-*Tested on Linux (Ubuntu 16.04) with cuda 10.2 on a GeForce GTX 1060 6GB graphic card*
-To train and evaluate calvis, follow the code in `train_Neural-Anthropometer_cross_validation.py`
+### 3.2. Training
+
+*Tested on Linux (Ubuntu 20.04) with cuda 10.2 on a GeForce GTX 1060 6GB graphic card*
+To train and evaluate The Neural Anthropometer, open and run `train_Neural-Anthropometer_cross_validation.py` in your preferred IDE.
+
+### 3.2. Inference
+
+To perform inference with The Neural Anthropometer, open and run `train_Neural-Anthropometer_cross_validation.py` in your preferred IDE.
+
 
 ## 4. Storage info
 
-You might want to do a partial download depending on your needs.
-
-| Dataset     | 8 Meshes | 3803 Meshes | 3803 (200x200x1) Synthetic images | Annotations | Total |
+| Dataset     | 12000 Meshes | 12000 (200x200x1) Synthetic images | Annotations | Total |
 | -----------:|---------:|------------:|----------------------------------:|------------:|------:|
-| Neural Anthropometer      | 3.3MB    | 1.5GB       |   16MB                            | 1.8MB       | 1.6GB |
+| Neural Anthropometer      | 4.9 GB    | 160.6 MB      |   4.4 MB   | 5 GB |
 
 ## Citation
 If you use this code, please cite the following:
