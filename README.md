@@ -89,18 +89,7 @@ smpl_data/
  # joint_regressor  [24 x 232]
 ```
 
-#### 2.1.2. Human Body Models utilities
-
-You need to install [Human Body Models](https://github.com/neoglez/hbm). Please, consider installing all dependencies in a conda environment.
-
-``` shell
-
-git clone http://github.com/neoglez/hbm.git
-cd hbm
-pip install .
-```
-
-#### 2.1.3. Neural Anthropometer
+#### 2.1.2. Neural Anthropometer
 ``` shell
 
 git clone http://github.com/neoglez/neural-anthropometer.git
@@ -108,11 +97,11 @@ cd neural-anthropometer
 pip install .
 ```
 
-#### 2.1.4. Mesh synthesis
+#### 2.1.3. Mesh synthesis
 
 To synthesize the meshes, open and run `train_Neural-Anthropometer_cross_validation.py` in your preferred IDE.
 
-#### 2.1.5. Synthetic images with Blender
+#### 2.1.4. Synthetic images with Blender
 
 Building Blender is a painful process. That is why we recommend to download and install the version that we used. The provided code was tested with [Blender2.78](http://download.blender.org/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2).
 
@@ -120,7 +109,7 @@ Just open the Scripting view and load (or copy and paste) the script `synthesize
 Change the path correspondingly at `cmu_dataset_path = os.path.abspath("/home/youruser/YourCode/calvis/CALVIS/dataset/cmu/")` and run the script.
 The process takes several minutes.
 
-#### 2.1.6. Vedo and Trimesh
+#### 2.1.5. Vedo and Trimesh
 
 You need to install these two libraries (if you do not have them):
 
