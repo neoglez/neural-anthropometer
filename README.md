@@ -59,7 +59,10 @@ neural-anthropometer/dataset/
 
 ```
 
-## 2. or Create your own synthetic data
+## 2. Or create your own synthetic data
+
+Be aware that we did not list the dependencies in setup.py. Therefore, you will have to install the libraries depending on the functionality you want to obtain.
+
 ### 2.1. Preparation
 
 Please consider that in all cases, we install dependencies into a conda environment. The code was tested under ubuntu 20.04 with python 3.8.
@@ -79,7 +82,7 @@ Place these three files under `datageneration/data` folder.
 
 ``` shell
 
-smpl_data/
+datageneration/data/
 --------- smpl_data.npz # 2.5GB
  # trans*           [T x 3]     - (T: number of frames in MoCap sequence)
  # pose*            [T x 72]    - SMPL pose parameters (T: number of frames in MoCap sequence)
@@ -99,34 +102,54 @@ pip install .
 
 #### 2.1.3. Mesh synthesis
 
-To synthesize the meshes, open and run `train_Neural-Anthropometer_cross_validation.py` in your preferred IDE.
+To synthesize the meshes, open and run `generate_6000_meshes_with_smpl_total_random.py` in your preferred IDE (we use Spyder).
 
 #### 2.1.4. Synthetic images with Blender
 
-Building Blender is a painful process. That is why we recommend to download and install the version that we used. The provided code was tested with [Blender2.78](http://download.blender.org/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2).
+Building Blender is a painful process. We used Blender 2.91.0 Alpha. Wheel mercifully provided by 
+https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
 
-Just open the Scripting view and load (or copy and paste) the script `synthesize_cmu_200x200_grayscale_images.py`
-Change the path correspondingly at `cmu_dataset_path = os.path.abspath("/home/youruser/YourCode/calvis/CALVIS/dataset/cmu/")` and run the script.
+Follow the instructions given at
+https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
+
+Open and run `synthesize_na_200x200_grayscale_images.py` in your preferred IDE (we use Spyder).
+
 The process takes several minutes.
 
-#### 2.1.5. Vedo and Trimesh
+#### 2.1.5. HBM, Vedo and Trimesh
 
-You need to install these two libraries (if you do not have them):
+You need to install these three libraries:
 
 ``` shell
 
+git clone http://github.com/neoglez/hbm.git
+cd hbm
+pip install .
+
 conda install -c conda-forge vedo
+
 pip install trimesh
 ```
 
 ### 2.2. Annotating with Sharmeam (SHoulder width, ARM length and insEAM) and Calvis
 
-#### 2.1.2. Calculating shoulder width, right and left arm length and inseam.
-Run the script `.py`
+You need to install Calvis:
+
+``` shell
+
+git clone https://github.com/neoglez/calvis
+cd calvis
+pip install .
+```
+
+#### 2.1.2. Calculating eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
+
+Open and run `annotate_with_Sharmeam_and_Calvis.py` in your preferred IDE (we use Spyder).
 The process takes several hours.
 
-#### 2.1.3. Visualize shoulder width, right and left arm length and inseam.
-To visualize at which points Sharmeam is calculating the body measurements, follow the code in `display_one_by_one_8_subjects_Sharmeam_with_vedo_and_trimesh.py` or directly display it with colab `display_one_by_one_8_subjects_Sharmeam_with_vedo_and_trimesh.ipynb`
+#### 2.1.3. Optional: visualize the eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
+
+To visualize at which points Sharmeam and Calvis are calculating the HBDs, open and run `neural-antropometer/display/display_subject_sharmean_and_calvis_with_vedo_and_trimesh.py` or directly display it with colab.
 
 Note: To display the meshes in the browser, we use k3d backend. Install it with
 
@@ -143,10 +166,14 @@ At this point you should have the input (synthetic images) and the supervision s
 
 #### 3.1.1. Requirements
 * Install [pytorch](https://pytorch.org/) with [CUDA](https://developer.nvidia.com/cuda-downloads) support.
-* Download [The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer)
+* Download and install [The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer) in case you did not need it to generate your data.
 * Install scikit-learn, SciPy and its image processing routines
 
 ``` shell
+
+git clone http://github.com/neoglez/neural-anthropometer.git
+cd neural-anthropometer
+pip install .
 
 conda install scikit-learn 
 conda install -c anaconda scipy

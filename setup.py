@@ -4,12 +4,12 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
     
-REQUIREMENTS = ["numpy", "torch", "opencv-python", "trimesh", "vedo"]
+REQUIREMENTS = ["numpy", "opencv-python"]
 
 setuptools.setup(
-     name='na',  
+     name='neural-anthropometer',  
      version='0.0.1',
-     #scripts=['dokr'],
+     #scripts=[''],
      author=["Yansel González Tejeda", "Helmut A. Mayer"],
      author_email="neoglez@gmail.com",
      install_requires=REQUIREMENTS,

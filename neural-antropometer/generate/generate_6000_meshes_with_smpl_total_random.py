@@ -13,7 +13,7 @@ import math
 import json
 from datetime import datetime
 
-dataset_path = os.path.abspath("../dataset")
+dataset_path = os.path.abspath("../../dataset")
 dataset_meshes_path = os.path.join(dataset_path, "human_body_meshes/")
 dataset_meshes_path_pose0 = os.path.join(dataset_meshes_path, "pose0/")
 dataset_meshes_path_pose1 = os.path.join(dataset_meshes_path, "pose1/")
@@ -25,6 +25,7 @@ dataset_meshes_path_length = len(dataset_meshes_path)
 dataset_annotation_path = os.path.join(dataset_path, "annotations/")
 json_log_dir = os.path.join(dataset_path, "log/")
 json_log_path = os.path.join(json_log_dir, "synthezing.json")
+smpl_models = os.path.join("..", dataset_path, "datageneration", "data")
 
 for d in [dataset_meshes_path,
           dataset_meshes_path_pose0,
@@ -37,10 +38,10 @@ for d in [dataset_meshes_path,
           json_log_dir]:
     os.makedirs(d, exist_ok=True)
 
-SMPL_basicModel_f_lbs_path = ("/media/neoglez/Data2/privat/PhD_Uni_Salzburg"
-              "/DATASETS/smpl/models/basicModel_f_lbs_10_207_0_v1.0.0.pkl")
-SMPL_basicModel_m_lbs_path = ("/media/neoglez/Data2/privat/PhD_Uni_Salzburg"
-              "/DATASETS/smpl/models/basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
+SMPL_basicModel_f_lbs_path = os.path.join(smpl_models,
+                                       "basicModel_f_lbs_10_207_0_v1.0.0.pkl")
+SMPL_basicModel_m_lbs_path = os.path.join(smpl_models,
+                                       "basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
 model_files = {
     'female': SMPL_basicModel_f_lbs_path,
     'male': SMPL_basicModel_m_lbs_path

@@ -1,7 +1,7 @@
 """
-Created on Mon Mar 16 14:50:22 2020
-
 @author: neoglez
+Code adapted from
+https://github.com/ahmedosman/STAR/blob/master/star/pytorch/star.py
 """
 
 from __future__ import print_function, division
