@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author: yansel
+@author: neoglez
 """
 import os
 import locale

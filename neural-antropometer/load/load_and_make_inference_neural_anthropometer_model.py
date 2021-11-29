@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-@author: neogl
+@author: neoglez
 """
-import random
+
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
-from torchvision import datasets, transforms
 import matplotlib.pyplot as plt  # for plotting
 from NeuralAnthropometerDataset import (
     NeuralAnthropometerSyntheticImagesDatasetTrainTest,
@@ -16,30 +13,40 @@ from torch.utils.data.dataset import random_split
 from torch.utils.data import DataLoader
 import os
 from NeuralAnthropometerTransform import TwoDToTensor
-from torchvision import transforms
 from NeuralAnthropometer import NeuralAnthropometer
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-import datetime
+import locale
 
-transform = TwoDToTensor()
+locale.setlocale(locale.LC_NUMERIC, "C")
 
 rootDir = os.path.join("..", "..", "dataset")
 rootDir = os.path.abspath(rootDir)
 
-# This will be very slow!!
-batch_size = 1
+model_path = os.path.join(rootDir, "..", "model")
+model_name = "Neural_Anthropometer_Model_04-02-2021_15-34-54.pt"
+model_path = os.path.join(model_path, model_name)
+
+transform = TwoDToTensor()
+
 # CUDA for PyTorch
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda:0" if use_cuda else "cpu")
 torch.backends.cudnn.benchmark = False
 # create a new model, initialize random parameters
 na = NeuralAnthropometer(debug=False).to(device)
+na.load_state_dict(torch.load(model_path))
+na.eval()
 
 # loss and optimizer
+# Note that the loss here is a scalar because reduction="mean",
+# therefore, after subtracting element-wise the dimensions
+# predicted - actuals, every element of the resulting tensor is squared.
+# Finally, the tensor is flatten, the elements are summed and the sum is
+# divided by the number of elements in the tensor.
+# That means for us that we are going to test based on the mean squared error
+# (squared L2 norm).
 criterion = nn.MSELoss()
-optimizer = optim.SGD(na.parameters(), lr=0.005, momentum=0.9)
 
 # 2700 instances to train and validate
 na_train = NeuralAnthropometerSyntheticImagesDatasetTrainTest(
@@ -63,9 +70,10 @@ print("Train dataset lenght is {}".format(len(train_dataset)))
 print("Validation dataset lenght is {}".format(len(val_dataset)))
 print("Test dataset lenght is {}".format(len(test_dataset)))
 
-train_dt = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
-val_dt = DataLoader(val_dataset, shuffle=True, batch_size=batch_size)
-test_dt = DataLoader(test_dataset, batch_size=batch_size)
+# No need these dataloaders for testing (reporting results)
+# train_dt = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
+# val_dt = DataLoader(val_dataset, shuffle=True, batch_size=batch_size)
+test_dt = DataLoader(test_dataset, batch_size=1)
 
 # training
 # for batch_index, data in enumerate(train_dt):
@@ -83,56 +91,49 @@ test_dt = DataLoader(test_dataset, batch_size=batch_size)
 # integer indices. It is important to remeber that all HBD are given in
 # meters, so if you want to convert them to cm, you have to multiply by 100.
 debug = False
-average_epoch_loses = []
-epochs = 10
-for epoch in range(epochs):  # no. of epochs
-    running_loss = 0
-    for data in train_dt:
-        # move to GPU if available
-        actual_hbds = data["annotations"]["human_dimensions"].to(device)
-        inputs = data["image"].to(device)
-        # print("Images follow")
-        # print(inputs)
-        if debug:
-            print("actual follows")
-            print(actual_hbds)
 
-        # set the parameter gradients to zero
-        optimizer.zero_grad()
+# Vector of loss to report. The loss is here the MSE of all HBDs.
+loss_vector = []
 
-        # predict and move to GPU
-        predicted_hbds = na(inputs)  # .to(device)
-        if debug:
-            print("predicted follows")
-            print(predicted_hbds)
 
-        loss = criterion(predicted_hbds, actual_hbds)
-        if debug:
-            print("loss follows")
-            print(loss)
-        # propagate the loss backward
-        loss.backward()
-        # update the gradients
-        optimizer.step()
-        this_loss = loss.item()
-        print("Loss in this iteration follows")
-        print(this_loss)
-        running_loss += this_loss
-        if debug:
-            print("Running loss follows")
-            print(running_loss)
+for i, data in enumerate(test_dt, 1):
+    # move to GPU if available
+    actual_hbds = data["annotations"]["human_dimensions"].to(device)
+    inputs = data["image"].to(device)
+    # print("Images follow")
+    # print(inputs)
+    if debug:
+        print("actual follows")
+        print(actual_hbds)
 
-    average_epoch_loss = running_loss / len(train_dt)
-    average_epoch_loses.append(average_epoch_loss)
-    print("[Epoch %d] loss: %.19f" % (epoch + 1, average_epoch_loss))
 
-print("Done Training")
-average_epoch_loses_filepath = os.path.join(
-    rootDir, "log", "average_epoch_loses_{}.csv".format(1)
-)
-df = pd.DataFrame(data=average_epoch_loses)
+    # predict and move to GPU
+    predicted_hbds = na(inputs)  # .to(device)
+    if debug:
+        print("predicted follows")
+        print(predicted_hbds)
+
+    loss = criterion(predicted_hbds, actual_hbds)
+    if debug:
+        print("loss follows")
+        print(loss)
+    
+    this_loss = loss.item()
+    loss_vector.append(this_loss)
+    print("[{}] loss: {}".format(data["subject_string"], this_loss))
+
+print("Done Evaluating")
+txt = "Average loss across all subjects is {:.2f} cm.".format(
+    np.array(loss_vector).mean() * 100)
+print(txt)
+
+df = pd.DataFrame(data=loss_vector)
 df.to_csv(
-    "average_epoch_loses.csv",
+    "evaluating_losses.csv",
     index=False,
 )
-plt.plot(np.array(average_epoch_loses), "r")
+plt.plot(np.array(loss_vector), "r")
+plt.title("Loss (MSE) per subject.\n{}".format(txt))
+plt.xlabel("Subjects")
+plt.ylabel("Loss")
+plt.show()

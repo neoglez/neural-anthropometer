@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-@author: yansel
+@author: neoglez
 """
+
 import numpy as np
 import os
 import locale
