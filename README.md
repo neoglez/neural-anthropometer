@@ -16,9 +16,9 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 </p>
 
 ## Contents
-* [1. Download the Neuaral-Anthropometer (NA) dataset](https://github.com/neoglez/neural-anthropometer#1-download-neural-anthropometer-dataset)
-* [2. or Create your own synthetic data](https://github.com/neoglez/neural-anthropometer#2-or-create-your-own-synthetic-data)
-* [3. Training models](https://github.com/neoglez/neural-anthropometer#3-training-models)
+* [1. Clone and install Neural-Anthropometer](https://github.com/neoglez/neural-anthropometer#1-clone-and-install-neural-anthropometer)
+* [2. Or create your own synthetic data](https://github.com/neoglez/neural-anthropometer#2-or-create-your-own-synthetic-data)
+* [3. Training and evaluating The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer#Training-and-evaluating-The-Neural-Anthropometer)
 * [4. Storage info](https://github.com/neoglez/#4-storage-info)
 * [Citation](https://github.com/neoglez/neural-anthropometer#citation)
 * [License](https://github.com/neoglez/neural-anthropometer#license)
