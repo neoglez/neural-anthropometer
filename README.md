@@ -42,6 +42,8 @@ pip install .
 conda install -c conda-forge vedo
 
 pip install trimesh
+pip install sklearn
+pip install matplotlib
 ```
 
 ### 1.2. Install the Neural-Anthropometer
