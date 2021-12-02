@@ -197,8 +197,8 @@ To perform inference with The Neural Anthropometer, open and run `experiments/lo
 ## 5. Storage info
 
 | Dataset     | 12000 Meshes | 12000 (200x200x1) Synthetic images | Annotations | Total |
-| -----------:|---------:|------------:|----------------------------------:|------------:|------:|
-| Neural Anthropometer      | 4.9 GB    | 160.6 MB      |   4.4 MB   | 5 GB |
+| -----------:|-------------:|-----------------------------------:|------------:|------:|
+| Neural Anthropometer      | 4.9 GB    | 160.6 MB      |   4.4 MB   | ~5 GB |
 
 ## 6. Citation
 If you use this code, please cite the following:
