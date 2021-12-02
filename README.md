@@ -63,7 +63,7 @@ Download from our cloud (see bellow).
 |----------|:-------------:|---------------:|---------------:|
 | Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/5uD3bt1n207k8ko) | 7fe685fa21988a5dfcf567cdc18bee208f99e37ef44bef1d239aa720e219c47e | na-dataset |
 
-Unpack the dataset and put it directly under the folder `neural-anthropometer`. The general structure of the folders must be:
+Unpack the dataset and place it directly under the folder `neural-anthropometer`. The general structure of the folders must be:
 
 ``` shell
 neural-anthropometer/dataset/
