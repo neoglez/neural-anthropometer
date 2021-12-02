@@ -24,7 +24,35 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 * [License](https://github.com/neoglez/neural-anthropometer#license)
 * [Acknowledgements](https://github.com/neoglez/neural-anthropometer#acknowledgements)
 
-## 1. Download Neural-Anthropometer dataset
+## 1. Clone and install Neural-Anthropometer
+
+Be aware that we did not list all dependencies in setup.py. Therefore, you will have to install the libraries depending on the functionality you want to obtain.
+
+### 1.1. HBM, Vedo and Trimesh
+
+You need to install these three libraries:
+
+``` shell
+
+git clone http://github.com/neoglez/hbm.git
+cd hbm
+pip install .
+
+conda install -c conda-forge vedo
+
+pip install trimesh
+```
+
+### 1.2. Install the Neural-Anthropometer
+
+``` shell
+
+git clone http://github.com/neoglez/neural-anthropometer.git
+cd neural-anthropometer
+pip install .
+```
+
+## 2. Download Neural-Anthropometer dataset
 
 
 You can check [Storage info](https://github.com/neoglez/neural-anthropometer#4-storage-info) for how much disk space they require and can do partial download.
@@ -77,7 +105,7 @@ basicmodel_m_lbs_10_207_0_v1.0.0.pkl
 smpl_data.npz
 ```
 
-Place these three files under `datageneration/data` folder.
+Place these three files under `neural-antropometer/datageneration/data` folder.
 
 
 ``` shell
@@ -92,19 +120,11 @@ datageneration/data/
  # joint_regressor  [24 x 232]
 ```
 
-#### 2.1.2. Neural Anthropometer
-``` shell
-
-git clone http://github.com/neoglez/neural-anthropometer.git
-cd neural-anthropometer
-pip install .
-```
-
-#### 2.1.3. Mesh synthesis
+#### 2.1.2. Mesh synthesis
 
 To synthesize the meshes, open and run `generate_6000_meshes_with_smpl_total_random.py` in your preferred IDE (we use Spyder).
 
-#### 2.1.4. Synthetic images with Blender
+#### 2.1.3. Synthetic images with Blender
 
 Building Blender is a painful process. We used Blender 2.91.0 Alpha. Wheel mercifully provided by 
 https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
@@ -115,21 +135,6 @@ https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
 Open and run `synthesize_na_200x200_grayscale_images.py` in your preferred IDE (we use Spyder).
 
 The process takes several minutes.
-
-#### 2.1.5. HBM, Vedo and Trimesh
-
-You need to install these three libraries:
-
-``` shell
-
-git clone http://github.com/neoglez/hbm.git
-cd hbm
-pip install .
-
-conda install -c conda-forge vedo
-
-pip install trimesh
-```
 
 ### 2.2. Annotating with Sharmeam (SHoulder width, ARM length and insEAM) and Calvis
 
@@ -142,12 +147,12 @@ cd calvis
 pip install .
 ```
 
-#### 2.1.2. Calculating eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
+#### 2.2.1. Calculating eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
 
 Open and run `annotate_with_Sharmeam_and_Calvis.py` in your preferred IDE (we use Spyder).
 The process takes several hours.
 
-#### 2.1.3. Optional: visualize the eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
+#### 2.2.2. Optional: visualize the eight Human Body Dimensions (HBDs): shoulder width, right and left arm length, inseam; chest, waist and pelvis circumference, and height.
 
 To visualize at which points Sharmeam and Calvis are calculating the HBDs, open and run `neural-antropometer/display/display_subject_sharmean_and_calvis_with_vedo_and_trimesh.py` or directly display it with colab.
 
@@ -168,14 +173,9 @@ Both training and inference can be directly displayed in colab.
 
 #### 3.1.1. Requirements
 * Install [pytorch](https://pytorch.org/) with [CUDA](https://developer.nvidia.com/cuda-downloads) support.
-* Download and install [The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer) in case you did not need it to generate your data.
 * Install scikit-learn, SciPy and its image processing routines
 
 ``` shell
-
-git clone http://github.com/neoglez/neural-anthropometer.git
-cd neural-anthropometer
-pip install .
 
 conda install scikit-learn 
 conda install -c anaconda scipy
@@ -185,9 +185,10 @@ conda install -c anaconda scikit-image
 ### 3.2. Training
 
 *Tested on Linux (Ubuntu 20.04) with cuda 10.2 on a GeForce GTX 1060 6GB graphic card*
+
 To train and evaluate The Neural Anthropometer, open and run `experiments/experiment_1_input_all_test_all_save_results.py` in your preferred IDE.
 
-### 3.2. Inference
+### 3.3. Inference
 
 To perform inference with The Neural Anthropometer, open and run `experiments/load_and_make_inference_na_and_make_grid.py` in your preferred IDE.
 
