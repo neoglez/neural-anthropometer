@@ -18,12 +18,12 @@ Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 
 ## Contents
 * [1. Clone and install Neural-Anthropometer](https://github.com/neoglez/neural-anthropometer#1-clone-and-install-neural-anthropometer)
 * [2. Download Neural-Anthropometer dataset](https://github.com/neoglez/neural-anthropometer#2-download-neural-anthropometer-dataset)
-* [3. Or create your own synthetic data](https://github.com/neoglez/neural-anthropometer#2-or-create-your-own-synthetic-data)
-* [4. Training and evaluating The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer#3-training-and-evaluating-the-neural-anthropometer)
-* [5. Storage info](https://github.com/neoglez/#4-storage-info)
-* [6. Citation](https://github.com/neoglez/neural-anthropometer#citation)
-* [7. License](https://github.com/neoglez/neural-anthropometer#license)
-* [8. Acknowledgements](https://github.com/neoglez/neural-anthropometer#acknowledgements)
+* [3. Or create your own synthetic data](https://github.com/neoglez/neural-anthropometer#3-or-create-your-own-synthetic-data)
+* [4. Training and evaluating The Neural Anthropometer](https://github.com/neoglez/neural-anthropometer#4-training-and-evaluating-the-neural-anthropometer)
+* [5. Storage info](https://github.com/neoglez/#5-storage-info)
+* [6. Citation](https://github.com/neoglez/neural-anthropometer#6-citation)
+* [7. License](https://github.com/neoglez/neural-anthropometer#7-license)
+* [8. Acknowledgements](https://github.com/neoglez/neural-anthropometer#8-acknowledgements)
 
 ## 1. Clone and install Neural-Anthropometer
 
