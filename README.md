@@ -63,7 +63,7 @@ Download from our cloud (see bellow).
 |----------|:-------------:|---------------:|---------------:|
 | Neural-Anthropometer (full) |  [NeuralAnthropometer.tar.gz](https://cloudlogin03.world4you.com/index.php/s/5uD3bt1n207k8ko) | 7fe685fa21988a5dfcf567cdc18bee208f99e37ef44bef1d239aa720e219c47e | na-dataset |
 
-Put the dataset directly under the folder `neural-anthropometer`. The general structure of the folders must be:
+Unpack the dataset and put it directly under the folder `neural-anthropometer`. The general structure of the folders must be:
 
 ``` shell
 neural-anthropometer/dataset/
@@ -197,7 +197,7 @@ To perform inference with The Neural Anthropometer, open and run `experiments/lo
 
 ## 5. Storage info
 
-| Dataset  | Zip file   | 12000 Meshes | 12000 (200x200x1) Synthetic images | Annotations | Total |
+| Dataset  | `.tar.gz` file   | 12000 Meshes | 12000 (200x200x1) Synthetic images | Annotations | Total |
 | --------:|-------------:|-----------------------------------:|------------:|------:|------------|
 | Neural Anthropometer | 1.9 GB  | 4.9 GB  | 160.6 MB   |   4.4 MB   | ~5 GB |
 
