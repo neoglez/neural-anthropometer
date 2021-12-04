@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 REQUIREMENTS = ["numpy", "opencv-python"]
 
 setuptools.setup(
-     name='neural-anthropometer',  
+     name='neural_anthropometer',  
      version='0.0.1',
      #scripts=[''],
      author=["Yansel González Tejeda", "Helmut A. Mayer"],
@@ -32,6 +32,5 @@ setuptools.setup(
          "Programming Language :: Python :: 3",
          "License :: OSI Approved :: MIT License",
          "Operating System :: OS Independent",
-     ],
-
+     ]
  )
