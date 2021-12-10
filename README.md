@@ -106,6 +106,15 @@ Be aware that we did not list the dependencies in setup.py. Therefore, you will 
 
 Please consider that in all cases, we install dependencies into a conda environment. The code was tested under ubuntu 20.04 with python 3.8.
 
+* Install [pytorch](https://pytorch.org/) with [CUDA](https://developer.nvidia.com/cuda-downloads) support.
+
+You need to install these libraries:
+
+``` shell
+
+pip install chumpy
+```
+
 #### 3.1.1. SMPL data
 
 You need to download SMPL data from http://smpl.is.tue.mpg.de and https://www.di.ens.fr/willow/research/surreal/data/ in order to run the synthetic data generation code. Once you agree on SMPL license terms and have access to downloads, you will have the following three files:
@@ -116,19 +125,20 @@ basicmodel_m_lbs_10_207_0_v1.0.0.pkl
 smpl_data.npz
 ```
 
-Place these three files under `neural-antropometer/datageneration/data` folder.
-
+Place the basic models (two files) under `neural-antropometer/datageneration/data` folder.
 
 ``` shell
+mkdir datageneration/data
+cp your/path/models/*.pkl datageneration/data
+
+```
+The folder structure should be as follows.
+
+```
 
 datageneration/data/
---------- smpl_data.npz # 2.5GB
- # trans*           [T x 3]     - (T: number of frames in MoCap sequence)
- # pose*            [T x 72]    - SMPL pose parameters (T: number of frames in MoCap sequence)
- # maleshapes       [1700 x 10] - SMPL shape parameters for 1700 male scans
- # femaleshapes     [2103 x 10] - SMPL shape parameters for 2103 female scans 
- # regression_verts [232]
- # joint_regressor  [24 x 232]
+---------------- basicModel_f_lbs_10_207_0_v1.0.0.pkl
+---------------- basicmodel_m_lbs_10_207_0_v1.0.0.pkl
 ```
 
 #### 3.1.2. Mesh synthesis
