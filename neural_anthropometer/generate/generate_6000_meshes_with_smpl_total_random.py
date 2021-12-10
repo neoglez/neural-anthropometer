@@ -3,12 +3,13 @@
 """
 @author: neoglez
 """
-from smpl import SMPL
+
 
 import numpy as np
 import os
 import torch
-from utils import pose2
+import neural_anthropometer as na
+from neural_anthropometer.utils.utils import pose2
 import math
 import json
 from datetime import datetime
@@ -25,7 +26,7 @@ dataset_meshes_path_length = len(dataset_meshes_path)
 dataset_annotation_path = os.path.join(dataset_path, "annotations/")
 json_log_dir = os.path.join(dataset_path, "log/")
 json_log_path = os.path.join(json_log_dir, "synthezing.json")
-smpl_models = os.path.join("..", dataset_path, "datageneration", "data")
+smpl_models = os.path.join(dataset_path, "..", "datageneration", "data")
 
 for d in [dataset_meshes_path,
           dataset_meshes_path_pose0,
@@ -92,7 +93,7 @@ for i,_ in enumerate(range(betas.shape[2])):
     )
 
     # init SMPL
-    smpl = SMPL(model_files[gender])
+    smpl = na.SMPL(model_files[gender])
     # synthesize
     subject_betas = torch.FloatTensor(betas[:, :, i])
     # if you want to synthesize the mesh in the zero pose
