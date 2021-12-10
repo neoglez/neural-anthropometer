@@ -58,7 +58,6 @@ pip install .
 ## 2. Download Neural-Anthropometer dataset
 
 
-You can check [Storage info](https://github.com/neoglez/neural-anthropometer#4-storage-info) for how much disk space they require and can do partial download.
 Download from our cloud (see bellow).
 
 | Dataset  |  Download Link     | sha256sum      |  Password |
