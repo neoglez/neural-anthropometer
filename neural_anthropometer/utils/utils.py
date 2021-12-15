@@ -6,7 +6,7 @@ import trimesh.util as util
 
 def pose2(batch_size=1):
     """
-    returns pose (thetas) for the pose 2: arms lowered.
+    returns pose (thetas) for the pose 1: arms lowered.
 
     Returns
     -------

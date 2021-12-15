@@ -58,14 +58,7 @@ hig = 3
 betas = np.random.uniform(low, hig,(
      batch_size, num_betas, num_female_meshes + num_female_meshes))
 
-# Pose 2: Usually people are required to totally
-# lower their arms. However, we observe that if we impose this in
-# general for all 3D scans, and due to the fact that we are working
-# with LBS (which produce artifacts as we know) inter-penetrations
-# occur at the pelvis level with the hands. Therefore, we lower the
-# arms 'only' 45 degrees; this setting does not influence the upper
-# torso volume and so it does not have a significant impact in the
-# measurement/calculation while avoiding inter-penetrations.
+# Pose 1.
 zero_pose = torch.FloatTensor(np.zeros((1,72)))
 pose1 = torch.FloatTensor(pose2(batch_size=batch_size))
 

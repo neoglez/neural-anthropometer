@@ -117,18 +117,17 @@ pip install chumpy
 
 #### 3.1.1. SMPL data
 
-You need to download SMPL data from http://smpl.is.tue.mpg.de and https://www.di.ens.fr/willow/research/surreal/data/ in order to run the synthetic data generation code. Once you agree on SMPL license terms and have access to downloads, you will have the following three files:
+You need to download SMPL data from http://smpl.is.tue.mpg.de in order to run the synthetic data generation code. Once you agree on SMPL license terms and have access to downloads, you will have the following files:
 
 ```
 basicModel_f_lbs_10_207_0_v1.0.0.pkl
 basicmodel_m_lbs_10_207_0_v1.0.0.pkl
-smpl_data.npz
 ```
 
 Place the basic models (two files) under `neural-antropometer/datageneration/data` folder.
 
 ``` shell
-mkdir datageneration/data
+mkdir -p datageneration/data
 cp your/path/models/*.pkl datageneration/data
 
 ```
