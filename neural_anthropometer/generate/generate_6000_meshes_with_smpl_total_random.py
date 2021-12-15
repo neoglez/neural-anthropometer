@@ -14,7 +14,7 @@ import math
 import json
 from datetime import datetime
 
-dataset_path = os.path.abspath("../../dataset")
+dataset_path = os.path.join("..", "..", "dataset")
 dataset_meshes_path = os.path.join(dataset_path, "human_body_meshes/")
 dataset_meshes_path_pose0 = os.path.join(dataset_meshes_path, "pose0/")
 dataset_meshes_path_pose1 = os.path.join(dataset_meshes_path, "pose1/")

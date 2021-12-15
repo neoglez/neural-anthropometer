@@ -65,7 +65,7 @@ def pose2(batch_size=1):
 
     poses = np.zeros((batch_size, 72))
     poses[:] = pose
-    return pose
+    return poses
 
 
 def shoulder_width_subcurve(subcurveA, subcurveB):
