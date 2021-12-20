@@ -68,7 +68,7 @@ Unpack the dataset and place it directly under the folder `neural-anthropometer`
 
 ``` shell
 tar -xf neural-anthropometer.tar.gz
-mv dataset  /your-path/neural-anthropometer/
+mv dataset/*  ~/your-path/neural-anthropometer/dataset/
 
 ```
 
@@ -142,7 +142,7 @@ datageneration/data/
 
 #### 3.1.2. Mesh synthesis
 
-To synthesize the meshes, open and run `generate_6000_meshes_with_smpl_total_random.py` in your preferred IDE (we use Spyder).
+To synthesize the meshes, open and run `generate_6000_meshes_with_smpl_total_random.py` in your preferred IDE (we use VSCode/Spyder).
 
 #### 3.1.3. Synthetic images with Blender
 
@@ -152,7 +152,7 @@ https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
 Follow the instructions given at
 https://github.com/TylerGubala/blenderpy/releases/tag/v2.91a0
 
-Open and run `synthesize_na_200x200_grayscale_images.py` in your preferred IDE (we use Spyder).
+Open and run `synthesize_na_200x200_grayscale_images.py` in your preferred IDE (we use VSCode/Spyder).
 
 The process takes several minutes.
 
@@ -192,14 +192,14 @@ Both training and inference can be directly displayed in colab.
 ### 4.1. Preparation
 
 #### 4.1.1. Requirements
-* Install [pytorch](https://pytorch.org/) with [CUDA](https://developer.nvidia.com/cuda-downloads) support.
+* Install [pytorch](https://pytorch.org/). We recommend using [CUDA](https://developer.nvidia.com/cuda-downloads). CPU will run as well but it will take much longer.
 * Install scikit-learn, SciPy and its image processing routines
 
 ``` shell
 
-conda install scikit-learn 
-conda install -c anaconda scipy
-conda install -c anaconda scikit-image
+pip install scikit-learn
+pip install anaconda scipy
+pip install scikit-image
 ```
 
 ### 4.2. Training
