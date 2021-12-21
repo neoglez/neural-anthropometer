@@ -2,7 +2,7 @@ import sys
 import os
 import bpy
 from mathutils import Matrix
-from NeuralAnthropometerDataset import NeuralAnthropometerBasic
+import neural_anthropometer as na
 import time
 import json
 
@@ -29,7 +29,7 @@ male_images_path_pose0 = os.path.join(dataset_images_path_pose0, "male/")
 female_images_path_pose1 = os.path.join(dataset_images_path_pose1, "female/")
 male_images_path_pose1 = os.path.join(dataset_images_path_pose1, "male/")
 
-dataset = NeuralAnthropometerBasic(dataset_path)
+dataset = na.NeuralAnthropometerBasic(dataset_path)
 
 json_log_dir = dataset.json_log_dir
 json_log_path = os.path.join(json_log_dir, "synthezing_images.json")
