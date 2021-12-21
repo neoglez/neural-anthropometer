@@ -212,6 +212,28 @@ To train and evaluate The Neural Anthropometer, open and run `experiments/experi
 
 To perform inference with The Neural Anthropometer, open and run `experiments/load_and_make_inference_na_and_make_grid.py` in your preferred IDE.
 
+By running the above script, a 4-instance minibatch will be displayed. We generate the figure with matplotlib and latex.
+In the generated figure the instances (synthetic pictures) and inference results (tables with HBDs) are overlapped, making the figure look messy and broken. Just maximize the window and the figure will be displayed correctly.
+
+Important: as of Matplotlib 3.2.1, you also need the package cm-super (see https://github.com/matplotlib/matplotlib/issues/16911).
+
+On linux, install it with:
+
+```
+sudo apt install cm-super.
+```
+
+Abbreviations used in the figure:
+| Human Body Dimension (HBD) | Actual  | Predicted | Error (%) |
+|---|---|---|
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
 
 ## 5. Storage info
 

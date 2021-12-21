@@ -331,5 +331,5 @@ def search_point_on_Path3D(curve, pointA, atol=1e-5):
         if on_seg.any():
             # found!
             return i
-    # unfortunatelly not found...
+    # unfortunately not found...
     return None
