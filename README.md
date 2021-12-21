@@ -220,19 +220,20 @@ Important: as of Matplotlib 3.2.1, you also need the package cm-super (see https
 On linux, install it with:
 
 ```
-sudo apt install cm-super.
+sudo apt install cm-super
 ```
 
 Abbreviations used in the figure:
-| Human Body Dimension (HBD) | Actual  | Predicted | Error (%) |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Abbreviation | Human Body Dimension (HBD) |
+|---|---|
+| CC | Chest Circumference |
+| H | Height |
+| I | Inseam |
+| LAL | Left Arm Length |
+| PC | Pelvis Circumference  |
+| RAL | Right Arm Length |
+| SW | Shoulder Width |
+| WC | Waist Circumference |
 
 
 ## 5. Storage info
