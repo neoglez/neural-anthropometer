@@ -44,7 +44,9 @@ SMPL_basicModel_m_lbs_path = os.path.join(smpl_models,
                                        "basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
 basicModel = {
     'female': SMPL_basicModel_f_lbs_path,
-    'male': SMPL_basicModel_m_lbs_path
+    'male': SMPL_basicModel_m_lbs_path,
+    'f': SMPL_basicModel_f_lbs_path,
+    'm': SMPL_basicModel_m_lbs_path
   }
 
 dataset = na.NeuralAnthropometerBasic(rootDir)
@@ -58,7 +60,7 @@ loader = torch.utils.data.DataLoader(
 
 json_log_path = dataset.json_log_path
 
-sharmean = na.Sharmean()
+sharmeam = na.Sharmeam()
 item_id = None
 # if we want a particular subject
 want_subject = True
@@ -77,7 +79,7 @@ else:
     subject = next(iter(loader))
     meshi = subject
 
-
+subject =  meshi["mesh_name"][0][:8] + meshi["mesh_name"][0][-8:-4]
 
 # plotter
 settings.embedWindow(backend=False)
@@ -93,45 +95,45 @@ N = 55
 meshpath = meshi["pose0_file"][0]
 gender = meshi["person_gender"][0]
 
-sharmean.clear()
-sharmean.mesh_path(meshpath)
-sharmean.load_mesh(basicModel, gender=gender)
-sharmean.load_trimesh()
+sharmeam.clear()
+sharmeam.mesh_path(meshpath)
+sharmeam.load_mesh(basicModel, gender=gender)
+sharmeam.load_trimesh()
 
 # shoulder width
-sw = sharmean.shoulder_width()
-sw_subcurve = sharmean.return_shoulder_width_subcurve()
+sw = sharmeam.shoulder_width()
+sw_subcurve = sharmeam.return_shoulder_width_subcurve()
 # assemble the subcurves
 sw_actor = (
     Lines(sw_subcurve[:, 0, :], endPoints=sw_subcurve[:, 1, :]).lw(5).c("g")
 )
 
 # change pose
-sharmean.pose_model_pose2()
+sharmeam.pose_model_pose2()
 
 # right arm length
-ral = sharmean.right_arm_lenth()
-ral_subcurve = sharmean.return_right_arm_subcurve()
+ral = sharmeam.right_arm_lenth()
+ral_subcurve = sharmeam.return_right_arm_subcurve()
 # assemble the subcurves
 ral_actor = (
     Lines(ral_subcurve[:, 0, :], endPoints=ral_subcurve[:, 1, :]).lw(5).c("m")
 )
 
 # left arm length
-lal = sharmean.left_arm_lenth()
-lal_subcurve = sharmean.return_left_arm_subcurve()
+lal = sharmeam.left_arm_lenth()
+lal_subcurve = sharmeam.return_left_arm_subcurve()
 # assemble the subcurves
 lal_actor = (
     Lines(lal_subcurve[:, 0, :], endPoints=lal_subcurve[:, 1, :]).lw(5).c("b")
 )
 
 # inseam
-ins = sharmean.inseam()
+ins = sharmeam.inseam()
 # array of two points
-inseam_line = sharmean.return_inseam_line()
+inseam_line = sharmeam.return_inseam_line()
 inseam_actor = Line(inseam_line).lw(5).c("c")
 
-height = sharmean.height()
+height = sharmeam.height()
 
 calvis = Calvis()
 calvis.calvis_clear()
@@ -178,17 +180,17 @@ text_info = (
     height,
 )
 
-text = Text2D(text_info, pos=6, s=1)
-text0 = Text2D("Subject {} in Pose 2".format(subject), pos=3, s=1)
-text1 = Text2D("Subject {} in Pose 1".format(subject), pos=3, s=1)
+text = Text2D(text_info, pos="right-mid", s=1)
+text0 = Text2D("{} subject {} in Pose 0".format(meshi["person_gender"][0].capitalize(), subject), pos="top-middle", s=1)
+text1 = Text2D("{} subject {} in Pose 1".format(meshi["person_gender"][0].capitalize(), subject), pos="top-middle", s=1)
 text2 = Text2D(
-    "Human Body Dimensions (HBD) for subject {}".format(subject), pos=3, s=1
+    "Human Body Dimensions (HBD) for subject {}".format(subject), pos="top-middle", s=1
 )
 
 human = vp.load(meshpath)
 
 vp.show(
-    sharmean.mesh.alpha(0.4),
+    sharmeam.mesh.alpha(0.4),
     sw_actor,
     ral_actor,
     lal_actor,
@@ -196,6 +198,13 @@ vp.show(
     text0,
     at=0,
 )
-vp.show(human.c("y").alpha(0.4), cc_actor, wc_actor, pc_actor, text1, at=1)
-vp.show(text, text2, at=2)
+vp.show(human.c("y").alpha(0.4),
+    cc_actor,
+    wc_actor,
+    pc_actor,
+    text1,
+    at=1)
+vp.show(text,
+    text2,
+    at=2)
 vp.show(interactive=1)
