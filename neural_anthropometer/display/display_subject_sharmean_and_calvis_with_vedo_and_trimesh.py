@@ -180,7 +180,7 @@ text_info = (
     height,
 )
 
-text = Text2D(text_info, pos="right-mid", s=1)
+text = Text2D(text_info, pos=(0.01, 0.8), s=1)
 text0 = Text2D("{} subject {} in Pose 0".format(meshi["person_gender"][0].capitalize(), subject), pos="top-middle", s=1)
 text1 = Text2D("{} subject {} in Pose 1".format(meshi["person_gender"][0].capitalize(), subject), pos="top-middle", s=1)
 text2 = Text2D(
@@ -204,7 +204,8 @@ vp.show(human.c("y").alpha(0.4),
     pc_actor,
     text1,
     at=1)
-vp.show(text,
+vp.show(
+    text,
     text2,
     at=2)
 vp.show(interactive=1)
