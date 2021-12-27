@@ -8,12 +8,13 @@ import torch.nn as nn
 import matplotlib.pyplot as plt  # for plotting
 from torch.utils.data import DataLoader
 import os
-na = __import__("neural-anthropometer")
+import neural_anthropometer as na
 
 rootDir = os.path.abspath(os.path.curdir)
 root_dir = os.path.join(rootDir, "..", "..", "dataset")
-model_path = os.path.join(rootDir, "..", "model")
-model_name = "Neural_Anthropometer_Model_17-03-2021_08-26-53_fold-0.pt"
+model_path = os.path.join(rootDir, "..", "..", "model")
+# If you want to make inference with a specific model, change following line
+model_name = "Neural_Anthropometer_Model_20-12-2021_15-33-10_fold-0.pt"
 model_path = os.path.join(model_path, model_name)
 
 transform = na.TwoDToTensor()
@@ -61,7 +62,7 @@ test_dt = DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 #  'waist_circumference': tensor([0.8459], dtype=torch.float64)
 #  }
 # The equivalent tensor contains the information in the corresponding
-# integer indices. It is important to remeber that all HBD are given in
+# integer indices. Note that all HBD are given in
 # meters, so if you want to convert them to cm, you have to multiply by 100.
 
 for i, data in enumerate(test_dt, 1):

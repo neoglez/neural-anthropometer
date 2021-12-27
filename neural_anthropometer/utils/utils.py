@@ -6,7 +6,7 @@ import trimesh.util as util
 
 def pose2(batch_size=1):
     """
-    returns pose (thetas) for the pose 2: arms lowered.
+    returns pose (thetas) for the pose 1: arms lowered.
 
     Returns
     -------
@@ -65,7 +65,7 @@ def pose2(batch_size=1):
 
     poses = np.zeros((batch_size, 72))
     poses[:] = pose
-    return pose
+    return poses
 
 
 def shoulder_width_subcurve(subcurveA, subcurveB):
@@ -331,5 +331,5 @@ def search_point_on_Path3D(curve, pointA, atol=1e-5):
         if on_seg.any():
             # found!
             return i
-    # unfortunatelly not found...
+    # unfortunately not found...
     return None

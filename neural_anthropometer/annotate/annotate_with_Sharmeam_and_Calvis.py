@@ -7,7 +7,7 @@ import numpy as np
 import os
 import locale
 from calvis import Calvis
-na = __import__("neural-anthropometer")
+import neural_anthropometer as na
 import time
 import json
 from datetime import datetime
@@ -25,13 +25,15 @@ SMPL_basicModel_m_lbs_path = os.path.join(smpl_models,
                                        "basicmodel_m_lbs_10_207_0_v1.0.0.pkl")
 basicModel = {
     'female': SMPL_basicModel_f_lbs_path,
-    'male': SMPL_basicModel_m_lbs_path
+    'male': SMPL_basicModel_m_lbs_path,
+    'f': SMPL_basicModel_f_lbs_path,
+    'm': SMPL_basicModel_m_lbs_path
   }
 
 dataset = na.NeuralAnthropometerBasic(rootDir)
 json_log_path = dataset.json_log_path
 
-sharmean = na.Sharmean()
+sharmeam = na.Sharmeam()
 calvis = Calvis()
 
 
@@ -50,24 +52,24 @@ for i, meshi in enumerate(dataset, 0):
     # meshpath
     meshpath = meshi['pose0_file']
 
-    sharmean.clear()
-    sharmean.mesh_path(meshpath)
-    sharmean.load_mesh(basicModel, gender=meshi['person_gender'])
-    sharmean.load_trimesh()
+    sharmeam.clear()
+    sharmeam.mesh_path(meshpath)
+    sharmeam.load_mesh(basicModel, gender=meshi['person_gender'])
+    sharmeam.load_trimesh()
     
     # shoulder width
-    sw = sharmean.shoulder_width()
+    sw = sharmeam.shoulder_width()
     
     # right arm length
-    ral = sharmean.right_arm_lenth()
+    ral = sharmeam.right_arm_lenth()
 
     # left arm length
-    lal = sharmean.left_arm_lenth()
+    lal = sharmeam.left_arm_lenth()
 
     # inseam
-    ins = sharmean.inseam()
+    ins = sharmeam.inseam()
 
-    height = sharmean.height()
+    height = sharmeam.height()
 
     # start calculating with calvis
     calvis.calvis_clear()

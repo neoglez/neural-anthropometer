@@ -70,7 +70,7 @@ model_timestamp = datetime.datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
 # Here we collect the results: we are going to record the estimated and
 # and actual measurements over the 5 folds. In this step, we do not
 # calculate error, loss or any other statistic. We merely save the data to
-# anylize it later. Since we have 5 folds, and 8 HBD estimated and actuals,
+# analyze it later. Since we have 5 folds, and 8 HBD estimated and actuals,
 # we must have at the end a tensor of size 5 X 8 X 2.
 results = np.zeros((k_folds,
                     int(len(dataset)/ k_folds),
@@ -156,7 +156,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
     model_file = os.path.join(model_path, model_name)
     torch.save(network.state_dict(), model_file)
 
-    # Evaluationfor this fold
+    # Evaluation for this fold
     kfold_this_error = 0
     with torch.no_grad():
         # Iterate over the test data and generate predictions
@@ -179,7 +179,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(dataset)):
         kfold_performace_error = kfold_this_error / len(testloader)
         # Print accuracy. In our case MSE over all dimensions.
         # The smaller, the better. Note that we have to average the MSE across
-        # the mini-batches (is this a valid operation? )
+        # the mini-batches.
         print("Estimated and actual recorded for fold {:d}".format(fold))
         print("--------------------------------")
 
