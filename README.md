@@ -221,7 +221,7 @@ conda install -c conda-forge k3d
 
 At this point you should have the input (synthetic images) and the supervision signal (human body dimensions annotations). Here, we provide code to train and evaluate The Neural Anthropometer on the synthetic data to predict given the input eight human body dimensions: shoulder width, right and left arm length, chest, waist and pelvis circumference and height.
 
-Both training and inference can be directly displayed in colab.
+Both training and inference can be directly displayed in colab (work in progress).
 
 ### 4.1. Preparation
 
