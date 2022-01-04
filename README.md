@@ -1,3 +1,5 @@
+[![Training](https://img.shields.io/badge/-Training-green.svg)](https://colab.research.google.com/github/neoglez/neural-anthropometer/blob/main/notebook/train_neural_antropomter.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neoglez/neural-anthropometer/blob/main/notebook/train_neural_antropomter.ipynb)
+
 # neural-anthropometer
 A Neural Anthropometer Learning from Body Dimensions Computed on Human 3D Meshes.
 Accepted to the [IEEE Symposium Series on Computational Intelligence (IEEE SSCI 2021)](https://attend.ieee.org/ssci-2021/)
