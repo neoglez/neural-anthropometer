@@ -288,15 +288,15 @@ pip uninstall neural_anthropometer
 If you use this code, please cite the following:
 
 ```
-@misc{ygtham2021na,
-	title={A Neural Anthropometer Learning from Body Dimensions Computed on Human 3D Meshes.},
-	author={Gonzalez Tejeda, Yansel and Mayer, Helmut A.},
-	year={2021},
-	eprint={2110.04064},
-	archivePrefix={arXiv},
-	primaryClass={cs.CV},
-	note={To appear in the Proceedings of the IEEE Symposium Series on Computational Intelligence (IEEE SSCI 2021)},
-}
+@INPROCEEDINGS{9660069,
+  author={Gonzalez Tejeda, Yansel and Mayer, Helmut A.},
+  booktitle={2021 IEEE Symposium Series on Computational Intelligence (SSCI)}, 
+  title={A Neural Anthropometer Learning from Body Dimensions Computed on Human 3D Meshes}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-8},
+  doi={10.1109/SSCI50451.2021.9660069}}
 ```
 
 ## 8. License
