@@ -19,8 +19,9 @@ class NeuralAnthropometer(nn.Module):
         self.debug = debug
         self.conv1 = nn.Conv2d(1, 8, 5)
         self.bn = nn.BatchNorm2d(8)
+        self.pool1 = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(8, 16, 5)
-        self.pool = nn.MaxPool2d(2, 2)
+        self.pool2 = nn.MaxPool2d(2, 2)
         self.fc1 = nn.Linear(16 * 47 * 47, 84)
         self.fc2 = nn.Linear(84, 8)
 
@@ -36,7 +37,7 @@ class NeuralAnthropometer(nn.Module):
             print(x.shape)
             print("\n")
 
-        x = self.pool(x)
+        x = self.pool1(x)
         if self.debug:
             print("Shape of the data after first pooling: ")
             print(x.shape)
@@ -48,7 +49,7 @@ class NeuralAnthropometer(nn.Module):
             print(x.shape)
             print("\n")
 
-        x = self.pool(x)
+        x = self.pool2(x)
         if self.debug:
             print("Shape of the data after second pooling: ")
             print(x.shape)
