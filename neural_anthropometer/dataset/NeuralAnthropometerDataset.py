@@ -319,6 +319,33 @@ class NeuralAnthropometerBasic(Dataset):
         pose1_elements = np.asanyarray(pose0_idxs) + 6000
         return pose1_elements
 
+    def getHumanBodyDimensionsNames(self):
+        """
+        Return the a list which the human body dimensions names in the order
+        returned by the dataset
+
+        Returns
+        -------
+        list
+
+        """
+        return [
+            'chest_circumference','height', 'inseam', 'left_arm_length',
+            'pelvis_circumference', 'right_arm_length', 'shoulder_width',
+            'waist_circumference'
+            ]
+    
+    def getDefaultHumanBodyDimensionsMetricUnit(self):
+        """
+        Return the default metric unit in which the human body dimensions
+        are expressed.
+
+        Returns
+        -------
+        str
+
+        """
+        return 'meter'
 
 ###############################################################################
 #        NeuralAntropometer 200 x 200 Synthetic Images Dataset.
