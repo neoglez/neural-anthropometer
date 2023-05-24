@@ -8,7 +8,7 @@ REQUIREMENTS = ["numpy", "opencv-python"]
 
 setuptools.setup(
      name='neural_anthropometer',  
-     version='0.0.1',
+     version='0.0.2',
      #scripts=[''],
      author=["Yansel González Tejeda", "Helmut A. Mayer"],
      author_email="neoglez@gmail.com",

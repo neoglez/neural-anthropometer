@@ -33,10 +33,12 @@ except:
 
 locale.setlocale(locale.LC_NUMERIC, "C")
 
-rootDir = os.path.join("..", "..", "dataset")
+rootDir = os.path.join("..", "..")
 rootDir = os.path.abspath(rootDir)
+dataset_dir = os.path.join(rootDir, "dataset")
 
-smpl_models = os.path.join(rootDir,"..", "datageneration", "data")
+
+smpl_models = os.path.join(rootDir,"datageneration", "data")
 
 SMPL_basicModel_f_lbs_path = os.path.join(smpl_models,
                                        "basicModel_f_lbs_10_207_0_v1.0.0.pkl")
@@ -49,7 +51,7 @@ basicModel = {
     'm': SMPL_basicModel_m_lbs_path
   }
 
-dataset = na.NeuralAnthropometerBasic(rootDir)
+dataset = na.NeuralAnthropometerBasic(dataset_dir)
 
 subsampler = torch.utils.data.SubsetRandomSampler(range(0, len(dataset)))
 
@@ -209,3 +211,4 @@ vp.show(
     text2,
     at=2)
 vp.show(interactive=1)
+vp.close()
