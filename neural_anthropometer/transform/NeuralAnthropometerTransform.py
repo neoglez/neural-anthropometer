@@ -13,8 +13,10 @@ class TwoDToTensor(object):
         # Use this parameter to control the tensor dtype.
         tensor_dtype = torch.float32
         if 'image' in sample:
-            image = sample["image"]
-            sample['image'] = pil2tensor(image)
+            # if the image is not tensor convert
+            if not torch.is_tensor(sample["image"]):
+                image = sample["image"]
+                sample['image'] = pil2tensor(image)
         if ('annotations' in sample and
             'human_dimensions' in sample['annotations'] and
             type(sample['annotations']['human_dimensions'])
